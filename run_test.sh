@@ -18,5 +18,6 @@ GCS_LOCATION="gs://notebooks-ci-demo"
 # and very likely will not be needed in your case. Next line removes the new line at the end of the variable
 # before passing it to the actual execution.
 
+echo "Going to execute notebook execution."
 # execute_notebook will return 0 or 1 depends on the status of the notebook.
 execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${GCS_LOCATION}"  -g p100 -c 0
