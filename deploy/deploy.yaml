@@ -9,11 +9,6 @@ steps:
 - name: 'google/cloud-sdk:237.0.0'
   args: ['-c', './run_notebook_instance.sh -p params.yaml -o "${_END_DATE}"']
   entrypoint: '/bin/bash'
-  secretEnv: ['API_KEY']
 substitutions:
   _START_DATE: '2000-01-01'
   _END_DATE: '2020-01-01'
-secrets:
-- kmsKeyName: projects/deeplearning-platform/locations/global/keyRings/api_key/cryptoKeys/google_maps_api
-  secretEnv:
-    API_KEY: CiQAqOZsWlDTXTRk/yjMO1BmEwto8Kboq90JG9zOuhizXsVO6fQSUQD7A7YryCuYQ+t6h9IL9Of6M+qCg/SezgvB/efTAGHhfzOYqa9mNMlECMo5hgnzpNjq6pPCauASAy8+VB+H4SLOfT9drLlpQTgxW3zTpAxtTQ==

@@ -21,10 +21,6 @@ steps:
   args: ['-c', './run_test.sh']
   dir: 'notebooks-ci-demo'
   entrypoint: '/bin/bash'
-  # Secret is needed since we are using Google Map API Key in the Notebook. Notebook just reads the key from the env variables.
-  # You can read more about Cloud Build Secrets here:
-  # https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-secrets-credentials
-  secretEnv: ['API_KEY'] 
 # ↑↑↑↑↑↑↑ End of Continuous Integration Part ↑↑↑↑↑↑↑↑↑↑↑↑↑###############
 ######### Execution will not process further if notebook is broken #####
 # ↓↓↓↓↓↓↓ Start of Continuous Delivery Part ↓↓↓↓↓↓↓↓↓↓↓↓ ################
@@ -56,7 +52,3 @@ steps:
   args: ['gcloud', 'functions', 'deploy', 'demo-notebook-function', '--trigger-topic=demo-notebook', '--region=us-central1', '--source=gs://notebooks-ci-demo/deploy.zip']
 # ↑↑↑↑↑↑↑ End of Continues Delivery Part ↑↑↑↑↑↑↑↑↑↑↑↑↑##################
 ######### This part will generate actual artifact  #####################
-secrets:
-- kmsKeyName: projects/deeplearning-platform/locations/global/keyRings/api_key/cryptoKeys/google_maps_api
-  secretEnv:
-    API_KEY: CiQAqOZsWlDTXTRk/yjMO1BmEwto8Kboq90JG9zOuhizXsVO6fQSUQD7A7YryCuYQ+t6h9IL9Of6M+qCg/SezgvB/efTAGHhfzOYqa9mNMlECMo5hgnzpNjq6pPCauASAy8+VB+H4SLOfT9drLlpQTgxW3zTpAxtTQ==

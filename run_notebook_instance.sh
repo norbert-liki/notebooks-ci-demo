@@ -54,9 +54,7 @@ fi
 OUTPUT_NOTEBOOK_GCS_FOLDER=$(output_for_mode "${TESTING_MODE}" "${GCS_LOCATION}" "${OUTPUT_DATE}")
 OUTPUT_NOTEBOOK_GCS_PATH="${OUTPUT_NOTEBOOK_GCS_FOLDER}/${NOTEBOOK_NAME}"
 
-# This is in order to remove new line at the end of the string.
-API_KEY=`echo "${API_KEY}"`
 
 echo "Going to execute the following command"
-echo "execute_notebook -i ./${INPUT_NOTEBOOK} -o ${INPUT_NOTEBOOK_GCS_PATH} -m api_key=${API_KEY}${PARAM_METADATA:-} -g p100 -c 0"
-execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${INPUT_NOTEBOOK_GCS_PATH}" -m "api_key=${API_KEY}${PARAM_METADATA:-}" -g p100 -c 0
+echo "execute_notebook -i ./${INPUT_NOTEBOOK} -o ${INPUT_NOTEBOOK_GCS_PATH}  -g p100 -c 0"
+execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${INPUT_NOTEBOOK_GCS_PATH}"  -g p100 -c 0

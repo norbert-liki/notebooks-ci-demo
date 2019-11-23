@@ -17,7 +17,6 @@ GCS_LOCATION="gs://notebooks-ci-demo"
 # In our demo notebook we are using an API_KEY environment variable, this is only specific for our demo
 # and very likely will not be needed in your case. Next line removes the new line at the end of the variable
 # before passing it to the actual execution.
-API_KEY=`echo "${API_KEY}"`
 
 # execute_notebook will return 0 or 1 depends on the status of the notebook.
-execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${GCS_LOCATION}" -m "api_key=${API_KEY}" -g t4 -c 1
+execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${GCS_LOCATION}"  -g p100 -c 0
