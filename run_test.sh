@@ -7,9 +7,8 @@
 # * article about it: https://blog.kovalevskyi.com/how-to-submit-jupyter-notebook-for-overnight-training-on-gcp-4ce1b0cd4d0d
 echo "eddig jó"
 
-my_dir="$(dirname "$0")"
 
-source "$my_dir/gcp-notebook-executor/utils.sh"
+source gcp-notebook-executor/utils.sh
 
 # Input values for the test, we only need 2:
 # * Notebook that we are going to test
