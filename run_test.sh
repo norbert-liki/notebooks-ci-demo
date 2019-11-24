@@ -9,6 +9,7 @@
 
 source gcp-notebook-executor/utils.sh
 
+echo "source okey"
 
 # Input values for the test, we only need 2:
 # * Notebook that we are going to test
@@ -21,4 +22,4 @@ GCS_LOCATION="gs://notebooks-ci-demo"
 
 echo "Going to execute notebook execution."
 # execute_notebook will return 0 or 1 depends on the status of the notebook.
-execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${GCS_LOCATION}"  -g p100 -c 0
+execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${GCS_LOCATION}" 
