@@ -20,7 +20,7 @@ with open("deploy.yaml", "r") as f:
     base_deploy_request = yaml.load(f)
 base_deploy_request["source"] = {
     "storageSource": {
-        "bucket": "gs://notebooks-ci-demo",
+        "bucket": "notebooks-ci-demo",
         "object": "live.tar.gz",
     }
 }
