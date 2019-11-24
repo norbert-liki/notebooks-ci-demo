@@ -11,14 +11,14 @@ steps:
   # Next, we need to checkout the exact commit that we need to test. Otherwise, Cloud Build will be testing the master.
   # Variable $COMMIT_SHA provided by the Cloud Build. You can find more about Cloud Build variables here:
   # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
-- name: 'gcr.io/cloud-builders/git'
-  args: ['checkout', '$COMMIT_SHA']
-  dir: 'notebooks-ci-demo'
+#- name: 'gcr.io/cloud-builders/git'
+#  args: ['checkout', '$COMMIT_SHA']
+#  dir: 'notebooks-ci-demo'
   # This will start notebook background execution.
   # You can read more about the background execution here:
   # https://blog.kovalevskyi.com/how-to-submit-jupyter-notebook-for-overnight-training-on-gcp-4ce1b0cd4d0d
 - name: 'google/cloud-sdk:latest'
-  args: ['-c', './run_test.sh']
+  args: ['-c', 'chmod +x ./run_test.sh && ./run_test.sh']
   dir: 'notebooks-ci-demo'
   entrypoint: '/bin/bash'
 # ↑↑↑↑↑↑↑ End of Continuous Integration Part ↑↑↑↑↑↑↑↑↑↑↑↑↑###############
@@ -37,7 +37,7 @@ steps:
   # Archive uploaded to the place where the production system expects it.
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'live.tar.gz', 'gs://notebooks-ci-demo/live.tar.gz']
-  dir: '.'
+  dir: 'notebooks-ci-demo'
   # Now we zipping folder with the cloud function that we want to use on a daily basis.
 - name: 'google/cloud-sdk:237.0.0'
   args: ['-c', 'apt update && apt install -y zip && zip deploy.zip *']
@@ -49,6 +49,6 @@ steps:
   dir: 'deploy'
   # For the next step, the cloud build service account must be granted the Cloud Functions Developer permission (not default).
 - name: 'google/cloud-sdk:237.0.0'
-  args: ['gcloud', 'functions', 'deploy', 'demo-notebook-function', '--trigger-topic=demo-notebook', '--region=us-central1', '--source=gs://notebooks-ci-demo/deploy.zip']
+  args: ['gcloud', 'functions', 'deploy', 'startrun', '--trigger-topic=demo-notebook', '--region=us-central1', '--source=gs://notebooks-ci-demo/deploy.zip', '--runtime=python37']
 # ↑↑↑↑↑↑↑ End of Continues Delivery Part ↑↑↑↑↑↑↑↑↑↑↑↑↑##################
 ######### This part will generate actual artifact  #####################

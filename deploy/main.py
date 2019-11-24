@@ -20,8 +20,8 @@ with open("deploy.yaml", "r") as f:
     base_deploy_request = yaml.load(f)
 base_deploy_request["source"] = {
     "storageSource": {
-        "bucket": "dl-platform-temp",
-        "object": "notebook-ci-showcase/live.tar.gz",
+        "bucket": "gs://notebooks-ci-demo",
+        "object": "live.tar.gz",
     }
 }
 
@@ -47,6 +47,6 @@ def startrun(data, context):
     deploy_request["substitutions"]["_END_DATE"] = "{:%Y-%m-%d}".format(today)
     
     # Sends updated deploy.yaml to Cloud Build
-    response = build_client.projects().builds().create(projectId="deeplearning-platform", body=deploy_request).execute()
+    response = build_client.projects().builds().create(projectId="norbert-liki-sandbox", body=deploy_request).execute()
     # returns OK or error queueing job
     return str(response)
