@@ -9,7 +9,6 @@
 
 source gcp-notebook-executor/utils.sh
 
-echo "source okey"
 
 # Input values for the test, we only need 2:
 # * Notebook that we are going to test

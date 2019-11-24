@@ -137,10 +137,11 @@ function execute_notebook() {
                 --image-project=deeplearning-platform-release \
                 --maintenance-policy=TERMINATE \
                 --machine-type="${INSTANCE_TYPE}" \
-                --boot-disk-size=200GB \
+                --boot-disk-size=50GB \
                 --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
                 --quiet
+                --preemptible
     else
         gcloud compute instances create "${INSTANCE_NAME}" \
                 --zone="${ZONE}" \
@@ -149,10 +150,11 @@ function execute_notebook() {
                 --maintenance-policy=TERMINATE \
                 --accelerator="type=nvidia-tesla-${GPU_TYPE},count=${GPU_COUNT}" \
                 --machine-type="${INSTANCE_TYPE}" \
-                --boot-disk-size=200GB \
+                --boot-disk-size=50GB \
                 --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
                 --quiet
+                --preemptible
     fi
     if [[ $? -eq 1 ]]; then
         echo "Creation of background instance for training has failed."
