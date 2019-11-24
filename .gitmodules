@@ -1,3 +1,4 @@
 [submodule "gcp-notebook-executor"]
 	path = gcp-notebook-executor
-	url = https://github.com/GoogleCloudPlatform/ai-platform-samples/tree/master/notebooks/gcp-notebook-executor
+	url = https://github.com/gclouduniverse/gcp-notebook-executor
+#https://github.com/GoogleCloudPlatform/ai-platform-samples/tree/master/notebooks/gcp-notebook-executor
