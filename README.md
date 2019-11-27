@@ -1,5 +1,9 @@
 # Fully Configured Example of CI/CD for Notebooks on Top of Google Cloud Platform
 
+This repo is a fork of the Google Cloud platfrom [repo](https://github.com/GoogleCloudPlatform/ai-platform-samples).
+Additionally includes sources from other official Google [repository](https://github.com/gclouduniverse/JupyterNotebooksDevelopmentManifesto/tree/master/3_self_contained).
+
+
 This repository includes a fully functional continuous integration and continuous deployment system for [Jupyter Notebooks](https://jupyter.org/). 
 
 The goal of this repository is to showcase what can be built using notebook-centric development practices, and we aim for it to be a reference implementation for those who want to develop similar systems on Google Cloud. For the purposes of this example, we have created the sample notebook [demo.ipynb](demo.ipynb), which takes in a bigquery dataset to generate a usage dashboard, and have set up automated testing and deployment for this notebook. 

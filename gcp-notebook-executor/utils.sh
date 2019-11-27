@@ -140,7 +140,7 @@ function execute_notebook() {
                 --boot-disk-size=50GB \
                 --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
-                --quiet
+                --quiet \
                 --preemptible
     else
         gcloud compute instances create "${INSTANCE_NAME}" \
@@ -153,7 +153,7 @@ function execute_notebook() {
                 --boot-disk-size=50GB \
                 --scopes=https://www.googleapis.com/auth/cloud-platform \
                 --metadata="${META_DATA}" \
-                --quiet
+                --quiet \
                 --preemptible
     fi
     if [[ $? -eq 1 ]]; then

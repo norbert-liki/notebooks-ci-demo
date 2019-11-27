@@ -142,7 +142,7 @@ function execute_notebook_with_gpu() {
             --maintenance-policy=TERMINATE \
             --accelerator="type=nvidia-tesla-${GPU_TYPE},count=${GPU_COUNT}" \
             --machine-type="${INSTANCE_TYPE}" \
-            --boot-disk-size=200GB \
+            --boot-disk-size=50GB \
             --scopes=https://www.googleapis.com/auth/cloud-platform \
             --metadata="api_key=${API_KEY},input_notebook=${INPUT_NOTEBOOK_GCS_PATH},output_notebook=${OUTPUT_NOTEBOOK_GCS_FOLDER}${PARAM_METADATA:-}" \
             --metadata-from-file="startup-script=gcp-notebook-executor/notebook_executor.sh" \

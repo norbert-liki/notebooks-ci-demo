@@ -56,5 +56,5 @@ OUTPUT_NOTEBOOK_GCS_PATH="${OUTPUT_NOTEBOOK_GCS_FOLDER}/${NOTEBOOK_NAME}"
 
 
 echo "Going to execute the following command"
-echo "execute_notebook -i ./${INPUT_NOTEBOOK} -o ${INPUT_NOTEBOOK_GCS_PATH}  "
+echo "execute_notebook -i ./${INPUT_NOTEBOOK} -o ${OUTPUT_NOTEBOOK_GCS_PATH}  "
 execute_notebook -i "./${INPUT_NOTEBOOK}" -o "${OUTPUT_NOTEBOOK_GCS_PATH}" 
